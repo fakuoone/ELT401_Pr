@@ -121,4 +121,5 @@ int main(void){
             break;
         }
     } while (fehler_menue = 1);
+    return 0;
 }

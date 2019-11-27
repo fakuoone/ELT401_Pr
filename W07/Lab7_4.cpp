@@ -74,4 +74,5 @@ int ausgabe(void) {
 int main(void) {
     eingabe();
     ausgabe();
+    return 0;
 }

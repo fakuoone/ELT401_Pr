@@ -2,13 +2,13 @@
 Programme Praktikum
 
 ## W06 - Woche 6
-+ Lab6_1: Prolimmerechner
++ Lab6_1: Promillerechner
 + Lab6_2: Cafeteria-Automat
 
 ## W07 - Woche 7
 + Lab7_1: Promillerechner mit Switch-Case
 + Lab7_3: Grundrechenarten mit Switch-Case
-+ Lab7_4: Ausgabe einer Zahl als Text
++ Lab7_4: Ausgabe einer Zahl (1 bis 9) als Text
 
 ## W08 - Woche 8
 + Lab8_1: 

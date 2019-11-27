@@ -1,10 +1,15 @@
-/* 
-ELT401      Technische Informatik Praktikum
-Projekt:    Eingegebene Zahl als Text ausgegeben
-Datum:      27.10.2019  
-Bearbeiter: 
-*/
+/*************************************************************************
+	Dateiname:			Lab7_4.cpp
+	Beschreibung: 		Ausgabe einer Zahl, die vorher eingegeben wurde,
+                        als Text
+	Version:			1.0
+	Aenderungsgrund: 	-
+	Projekt:    		Textausgabe Zahl 0..9 mit switch-case
+	Datum:      		28.11.2019
+	Bearbeiter:			
+*************************************************************************/
 
+/* Bibliotheken einbinden */
 #include <stdio.h>
 #define ENTER 10
 

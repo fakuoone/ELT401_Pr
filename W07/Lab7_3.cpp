@@ -1,8 +1,12 @@
-/* ELT401 Technische Informatik Praktikum
-Rechnen zweier Zahlen mit Menuefuehrung 
-27.10.2019  
-Bearbeiter: 
-*/
+/*************************************************************************
+	Dateiname:			Lab7_3.cpp
+	Beschreibung: 		4 Grundrechenarten fuer 2 Operanden mit SWITCH-CASE
+	Version:			1.0
+	Aenderungsgrund: 	-
+	Projekt:    		4 Grundrechenarten mit switch-case
+	Datum:      		28.11.2019
+	Bearbeiter:			
+*************************************************************************/
 
 #include <stdio.h>
 

@@ -1,8 +1,13 @@
-/*
-Projekt:    Promillerechner
-Datum:      21.11.2019
-
-*/
+/*************************************************************************
+	Dateiname:			Lab7_1.cpp
+	Beschreibung: 		Berechnung des Blutalkoholwerts auf Basis 
+						des Koerpergewichtes und der Biermenge
+	Version:			1.0
+	Aenderungsgrund: 	-
+	Projekt:    		Promillerechner
+	Datum:      		28.11.2019
+	Bearbeiter:			
+*************************************************************************/
 
 /* Einbinden der Bibliotheken */
 #include <stdio.h>

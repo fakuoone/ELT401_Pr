@@ -1,8 +1,8 @@
 /*************************************************************************
 	Dateiname:			Lab7_3.cpp
 	Beschreibung: 		4 Grundrechenarten fuer 2 Operanden mit SWITCH-CASE
-	Version:			1.0
-	Aenderungsgrund: 	-
+	Version:			2.0
+	Aenderungsgrund: 	Entfernen von Globalenvariablen
 	Projekt:    		4 Grundrechenarten mit switch-case
 	Datum:      		28.11.2019
 	Bearbeiter:			
@@ -12,20 +12,54 @@
 
 #define ENTER 10
 
-/* Globale Variablen*/
-int operand1, operand2, ergebnis, menue_eingabe;
-float quotient_ergebnis;
+/* Funktionsdeklaration (Eingabe 1. Operand) */
+int eingabe_operand1(void){
+    char enter;
+    int scanf_return;
+    int operand1;
+    do {
+            printf("Geben Sie eine Zahl ein (1-100): ");
+            scanf_return = scanf_s("%d%c", &operand1, &enter, 1);
+            if ((scanf_return == 0) || (enter != ENTER)) {
+                printf("Fehlerhafte Eingabe!");
+                if (enter != ENTER) {
+                    while (getchar() != '\n');
+                }
+                scanf_return = 0;
+            }
+    } while (scanf_return == 0);
+    return operand1;
+}
 
-/* Fuktionsdeklaration (Funktion: summe) */
+/* Funktionsdeklaration (Eingabe 2. Operand) */
+int eingabe_operand2(void){
+    char enter;
+    int scanf_return;
+    int operand2;
+    do {
+            printf("Geben Sie eine weitere Zahl ein (1-100): ");
+            scanf_return = scanf_s("%d%c", &operand2, &enter, 1);    
+            if ((scanf_return == 0) || (enter != ENTER)) {
+                printf("Fehlerhafte Eingabe!");
+                if (enter != ENTER) {
+                    while (getchar() != '\n');
+                }
+                scanf_return = 0;
+            }
+    } while (scanf_return == 0);
+    return operand2;
+}
+
+/* Funktionsdeklaration (Funktion: summe) */
 int summe(int x, int y);
 
-/* Fuktionsdeklaration (Funktion: differenz) */
+/* Funktionsdeklaration (Funktion: differenz) */
 int differenz(int x, int y);
 
-/* Fuktionsdeklaration (Funktion: produkt) */
+/* Funktionsdeklaration (Funktion: produkt) */
 int produkt(int x, int y);
 
-/* Fuktionsdeklaration (Funktion: quotient) */
+/* Funktionsdeklaration (Funktion: quotient) */
 float quotient(int x, int y);
 
 
@@ -54,65 +88,33 @@ float quotient(int x, int y) {
     }
 }
 
-/* Hauptprogramm */
-int main(void){
-    char enter;
-    int fehler_menue = 0;
-    int scanf_return = 0;
-    
-    /* erste Zahl eingeben */
-    do {
-        printf("Geben Sie eine Zahl ein (1-100): ");
-        scanf_return = scanf_s("%d%c", &operand1, &enter, 1);
-        if ((scanf_return == 0) || (enter != ENTER)) {
-            printf("Fehlerhafte Eingabe!");
-            if (enter != ENTER) {
-                while (getchar() != '\n');
-            }
-            scanf_return = 0;
-        }
-    } while (scanf_return == 0);
-
-    /* zweite Zahl eingeben */
-    scanf_return = 0;   
-    do {
-        printf("Geben Sie eine weitere Zahl ein (1-100): ");
-        scanf_return = scanf_s("%d%c", &operand2, &enter, 1);    
-        if ((scanf_return == 0) || (enter != ENTER)) {
-            printf("Fehlerhafte Eingabe!");
-            if (enter != ENTER) {
-                while (getchar() != '\n');
-            }
-            scanf_return = 0;
-        }
-    } while (scanf_return == 0);
-
-    /* Menueabfrage */ 
+/* Rechenart-Abfrage mit Aufruf der Rechenoperationen und der Ausgabe */
+int auswahl_rechenart_mit_ausgabe(int operand1, int operand2) {
+    /* Deklartion Steuervariablen */
+    int fehler_menue;
+    int rechenart;
+    /* Schleife fur Fehlerabfang */
     do {
         printf (" - Addition \t= 1\n - Division \t= 2\n - Produkt \t= 3\n - Quotient \t= 4\nWie wollen Sie die Zahlen zusammen rechnen? ");    
-        scanf_s("%d",&menue_eingabe);    
+        scanf_s("%d",&rechenart);    
         /* Eingabe Menue pruefen */   
-        switch (menue_eingabe)
+        switch (rechenart)
         {
         case 1:
             /* Summe berechnen und anzeigen */            
-            ergebnis = summe(operand1, operand2);
-            printf("Summe:\t\t%d + %d = %d\n", operand1, operand2, ergebnis);
+            printf("Summe:\t\t%d + %d = %d\n", operand1, operand2, summe(operand1, operand2));
             break;
-        case 2:
-            ergebnis = differenz(operand1, operand2);            
+        case 2:           
             /* Differenz berechnen und anzeigen */            
-            printf("Differenz:\t%d - %d = %d\n", operand1, operand2, ergebnis);
+            printf("Differenz:\t%d - %d = %d\n", operand1, operand2, differenz(operand1, operand2));
             break;
         case 3:
             /* Produkt berechnen und anzeigen */            
-            ergebnis = produkt(operand1, operand2);            
-            printf("Produkt:\t%d * %d = %d\n", operand1, operand2, ergebnis);
+            printf("Produkt:\t%d * %d = %d\n", operand1, operand2, produkt(operand1, operand2));
             break;
         case 4:
             /* Quotient berechnen und anzeigen */            
-            quotient_ergebnis = quotient(operand1, operand2);            
-            printf("Quotient:\t%d / %d = %.4f\n", operand1, operand2, quotient_ergebnis);
+            printf("Quotient:\t%d / %d = %.4f\n", operand1, operand2, quotient(operand1, operand2));
             break;
         default:
             /* Fall, wenn kein gegebener Menuepunkt eingegeben wurde */
@@ -121,5 +123,11 @@ int main(void){
             break;
         }
     } while (fehler_menue = 1);
+    return 0;
+}
+
+/* Hauptprogramm */
+int main(void){
+    auswahl_rechenart_mit_ausgabe(eingabe_operand1(), eingabe_operand2());
     return 0;
 }

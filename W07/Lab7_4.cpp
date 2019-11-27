@@ -2,8 +2,8 @@
 	Dateiname:			Lab7_4.cpp
 	Beschreibung: 		Ausgabe einer Zahl, die vorher eingegeben wurde,
                         als Text
-	Version:			1.0
-	Aenderungsgrund: 	-
+	Version:			2.0
+	Aenderungsgrund: 	entfernen von Globalenvariablen
 	Projekt:    		Textausgabe Zahl 0..9 mit switch-case
 	Datum:      		28.11.2019
 	Bearbeiter:			
@@ -13,13 +13,12 @@
 #include <stdio.h>
 #define ENTER 10
 
-/* Deklaration Variablen */
-int zahl;
-char enter;
-int scanf_return;
-
 /* Zahl-Eingabe als Integer */
 int eingabe(void) {
+    /* Eingegebene Zahl */
+    int zahl;
+    int scanf_return;
+    char enter;
     do {
         printf("Bitte eine Zahl von 1 bis 9 eingeben: ");
         scanf_return = scanf_s("%i%c", &zahl, &enter, 1);
@@ -31,10 +30,11 @@ int eingabe(void) {
             scanf_return = 0;
         }
     } while (scanf_return == 0);
+    return zahl;
 }
 
 /* Textausgabe: Zahl als Text */
-int ausgabe(void) {
+int ausgabe(int zahl) {
     switch (zahl)
     {
         case 1:
@@ -72,7 +72,7 @@ int ausgabe(void) {
 
 /* Hauptprogamm */
 int main(void) {
-    eingabe();
-    ausgabe();
+    /* Ausgabe der eingegebene Zahl (eingabe()) als Text (ausgabe()) */
+    ausgabe(eingabe());
     return 0;
 }

@@ -1,6 +1,8 @@
 # ELT401_Pr
 Programme Praktikum
 
+**Nur zur Kontrolle, NICHT zum kopieren**
+
 ## W06 - Woche 6
 + Lab6_1: Promillerechner
 + Lab6_2: Cafeteria-Automat

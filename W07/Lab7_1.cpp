@@ -14,9 +14,11 @@
 #include <conio.h>
 #define ENTER 10
 #define ESC 27
+#define PILSNER 4.8f
+#define ALKOHOLDICHTE 0.79f
 
-float pilsner = 4.8;
-float alk_dichte = 0.79;
+float pilsner = PILSNER;
+float alk_dichte = ALKOHOLDICHTE;
 int volumen_getraenk;
 float koerpergewicht;
 

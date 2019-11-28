@@ -1,7 +1,7 @@
 /*************************************************************************
 	Dateiname:			Lab7_1.cpp
 	Beschreibung: 		Berechnung des Blutalkoholwerts auf Basis 
-						des Koerpergewichtes und der Biermenge
+				des Koerpergewichtes und der Biermenge
 	Version:			1.0
 	Aenderungsgrund: 	-
 	Projekt:    		Promillerechner

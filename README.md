@@ -13,9 +13,6 @@ Programme Praktikum
 + Lab7_4: Ausgabe einer Zahl (1 bis 9) als Text
 
 ## W08 - Woche 8
-+ Lab8_1: 
-+ Lab8_2: 
-+ Lab8_3: 
 + Lab8_4: 
 + Lab8_5: 
 + Lab8_6: 

@@ -1,59 +1,60 @@
 /*************************************************************************
-	Dateiname:			Lab7_1.cpp
-	Beschreibung: 		Berechnung des Blutalkoholwerts auf Basis 
-				des Koerpergewichtes und der Biermenge
-	Version:			1.0
-	Aenderungsgrund: 	-
-	Projekt:    		Promillerechner
-	Datum:      		28.11.2019
-	Bearbeiter:			
+Dateiname:			Lab7_1.cpp
+Beschreibung: 		Berechnung des Blutalkoholwerts auf Basis
+des Koerpergewichtes und der Biermenge
+Version:			2.0
+Aenderungsgrund: 	-
+Projekt:    		Promillerechner
+Datum:      		28.11.2019
+Bearbeiter:
 *************************************************************************/
 
 /* Einbinden der Bibliotheken */
 #include <stdio.h>
 #include <conio.h>
+
+/* Definition von Makros */
 #define ENTER 10
 #define ESC 27
 #define PILSNER 4.8f
 #define ALKOHOLDICHTE 0.79f
+#define KONSTANTE_MAENNLICH 0.65f
 
-float pilsner = PILSNER;
-float alk_dichte = ALKOHOLDICHTE;
-int volumen_getraenk;
-float koerpergewicht;
-
+/* Funktion um einen Kommentar abhaengig vom Alkoholwert aus zu geben */
 int kommentar(float promillewert) {
 	if ((0 <= promillewert) && (promillewert <= 0.3)) {
-	/* Ausgabe 0 bis 0,3 Promille */
-	    printf("Das geht noch");
+		/* Ausgabe 0 bis 0,3 Promille */
+		printf("Das geht noch");
 	}
 	else if (promillewert <= 0.5)
 	{
-	/* Ausgabe 0,3 bis 0,5 Promille */
+		/* Ausgabe 0,3 bis 0,5 Promille */
 		printf("Achtung, es kann gefaehrlich werden");
 	}
-    else if (promillewert <= 0.8)
-    {
-    /* Ausgabe 0,5 bis 0,8 Promille */
-        printf("Das galt frueher");
-    }
-    else if (promillewert > 0.8)
-    {
-    /* Ausgabe ab 0,8 Promille */
-        printf("Kein Kommentar");
-    }
-    else
-    {
-    /* Ausgabe Fehlerabfang, wenn der Promillewert negativ ist */
-        printf("Es wurde ein neagtiver Promillewert errechnet!\n");
-        return 1;
-    }
+	else if (promillewert <= 0.8)
+	{
+		/* Ausgabe 0,5 bis 0,8 Promille */
+		printf("Das galt frueher");
+	}
+	else if (promillewert > 0.8)
+	{
+		/* Ausgabe ab 0,8 Promille */
+		printf("Kein Kommentar");
+	}
+	else
+	{
+		/* Ausgabe Fehlerabfang, wenn der Promillewert negativ ist */
+		printf("Es wurde ein neagtiver Promillewert errechnet!\n");
+		return 1;
+	}
 	printf(".\n");
 	return 0;
 }
 
-/* Funktion: Abfrage aller User Eingaben */
-int eingabe(void) {
+/* Erste Eingabe: Eingabe des Volumens der verzehrten Getränke */
+int eingabe_volumen(void) {
+	/* Ausgabevariable */
+	int volumen_getraenk; 
 	/* Variable, ob das letzte Zeichen einer Eingabe ein ENTER war */
 	char enter;
 	/* Steuervariable, ob die Eingabe mit dem datentyp uebereinstimmt */
@@ -68,8 +69,25 @@ int eingabe(void) {
 			while (getchar() != '\n');
 			steuervariable = 0;
 		}
+		else
+		{
+			if (volumen_getraenk < 0)
+			{
+				printf("Man kann keine negativen Bieren trinken. \nBitte ein plausibles Volumen angeben");
+			}
+		}
 	} while (steuervariable == 0);
-	/* Zweite Eingabe: Koerpergewicht in kg */
+	return volumen_getraenk;
+}
+
+/* Zweite Eingabe: Koerpergewicht in kg */
+float eingabe_gewicht(void) {
+	/* Ausgabevariable */
+	float koerpergewicht;
+	/* Variable, ob das letzte Zeichen einer Eingabe ein ENTER war */
+	char enter;
+	/* Steuervariable, ob die Eingabe mit dem datentyp uebereinstimmt */
+	int steuervariable;
 	do
 	{
 		printf("Bitte Ihr Gewicht eingeben: ");
@@ -80,25 +98,37 @@ int eingabe(void) {
 			while (getchar() != '\n');
 			steuervariable = 0;
 		}
+		else
+		{
+			if (koerpergewicht <= 0)
+			{
+				printf("Bitte ein  plausibles Gewicht angeben!");
+				steuervariable = 0;
+			}
+		}
 	} while (steuervariable == 0);
-	return 0;
+	return (float)koerpergewicht;
 }
 
 /* Funktion für die die Menge (Gramm) an Alkohol in einem Getraenk */
 float menge_alk(int milliliter) {
-	return ((float)milliliter * pilsner/100 * alk_dichte);
+	return ((float)milliliter * PILSNER / 100 * ALKOHOLDICHTE);
 }
 
 /* Funktion fuer die Errechnung des Promillegehaltes */
 float promille(float gewicht, float alkoholmenge) {
-	return ((float)(alkoholmenge / (float(0.65)*gewicht)));
+	return ((float)(alkoholmenge / (KONSTANTE_MAENNLICH*gewicht)));
 }
 
 int main(void) {
+	/* Variable: fue das Benenden des Programms */
 	int prog_ende = 0;
+	int volumen;
+	float gewicht;
 	do {
-		eingabe();
-		kommentar(promille(koerpergewicht, menge_alk(volumen_getraenk)));
+		volumen = eingabe_volumen();
+		gewicht = eingabe_gewicht();
+		kommentar(promille(gewicht, menge_alk(volumen)));
 		/* Exit Bedingung fuer die die Schleife */
 		printf("Programm beenden mit 'ESC', zum Fortsetzen beliebige andere Taste\n");
 		prog_ende = _getch();

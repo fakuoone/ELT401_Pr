@@ -15,9 +15,9 @@ int main(void) {
     int array1[100], array2[100];
 
     /* befuellen der Arrays */
-    for (int i = 0; i < 99; i++)
+    for (int i = 0; i < 100; i++)
     {
-        array1[i] = 48; /* Jedes Feld eird mit 48 beschrieben */
+        array1[i] = 48; /* Jedes Feld wird mit 48 beschrieben */
         array2[i] = i +1; /* Da i als ersten wert 0 hat, muss immer eine 1 zu i addiert werden, dass die Zahlen 1 - 100 in die Felder geschrieben werden */
     }
 }

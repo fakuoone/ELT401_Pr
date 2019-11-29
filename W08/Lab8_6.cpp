@@ -1,7 +1,7 @@
 /*************************************************************************
 	Dateiname:			Lab8_6.cpp
 	Beschreibung: 		Transponieren, vertauschen der Zeilen und Spalten, einer Matrix
-	Version:			1.0
+	Version:			1.3
 	Aenderungsgrund: 	-
 	Projekt:    		Matrix transponieren
 	Datum:      		28.11.2019
@@ -49,17 +49,19 @@ int main(void){
 	{
 		for (int j = 0; j < DIMENSION; j++)
 		{
-			printf("%d ",matrix1[i][j]);
+			printf("%2d ",matrix1[i][j]);
 		}
 		printf("\n");
 	}
+	/* Zeilenumbruch fuer eine bessere Lesbarkeit in der Ausgabe */
+	printf("\n");
 	
 	/* Anzeige Matrix 2 */
-		for (int i = 0; i < DIMENSION; i++)
+	for (int i = 0; i < DIMENSION; i++)
 	{
 		for (int j = 0; j < DIMENSION; j++)
 		{
-			printf("%d ",matrix2[i][j]);
+			printf("%2d ",matrix2[i][j]);
 		}
 		printf("\n");
 	}

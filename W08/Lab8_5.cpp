@@ -1,5 +1,5 @@
 /*************************************************************************
-	Dateiname:			Lab8_5cpp
+	Dateiname:			Lab8_5.cpp
 	Beschreibung: 		Ausgabe einer 9x9 Matrix mit dem kleinen "Ein-Mal-Eins"
 	Version:			1.0
 	Aenderungsgrund: 	-

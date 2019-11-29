@@ -20,5 +20,6 @@ int main(void) {
         array1[i] = 48; /* Jedes Feld wird mit 48 beschrieben */
         array2[i] = i +1; /* Da i als ersten wert 0 hat, muss immer eine 1 zu i addiert werden, dass die Zahlen 1 - 100 in die Felder geschrieben werden */
     }
+    return 0;
 }
     

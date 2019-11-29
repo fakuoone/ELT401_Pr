@@ -3,7 +3,7 @@
 	Beschreibung: 		Befuellenm eines Arrays mit der Zahl 48 und ein werteres mit den Zahlen 1 bis 100
 	Version:			1.0
 	Aenderungsgrund: 	-
-	Projekt:    		Promillerechner
+	Projekt:    		Array befueller
 	Datum:      		28.11.2019
 	Bearbeiter:			
 *************************************************************************/

@@ -1,9 +1,9 @@
 /*************************************************************************
-	Dateiname:			Lab7_1.cpp
+	Dateiname:			Lab8_5cpp
 	Beschreibung: 		Ausgabe einer 9x9 Matrix mit dem kleinen "Ein-Mal-Eins"
 	Version:			1.0
 	Aenderungsgrund: 	-
-	Projekt:    		Promillerechner
+	Projekt:    		"Eim-Mal-Eins"-Matrix"
 	Datum:      		28.11.2019
 	Bearbeiter:			
 *************************************************************************/

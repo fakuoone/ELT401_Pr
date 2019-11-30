@@ -13,12 +13,13 @@
 
 /* Definition von Makros */
 #define ENTER 10
+#define ESC 27
 
 /* Definition globaler Variablen */
 int user_ergebnisse[4];
 
 /* Funktion zur Berechnung der Summe */
-int summe(int x, int y){
+int addition(int x, int y){
     return (x + y);
 }
 
@@ -120,3 +121,55 @@ int abfrage_ergebnisse(void) {
     return 0;
 }
 
+int main(void){
+    /* Eingabevariablen */
+    int zahl1, zahl2;
+    /* Ausgabevariablen */
+    int ergebnisse[4];
+    char ergebnis_namen[5][11] = {"Summe", "Differenz", "Produkt", "Quotient", "Rest"};
+    int gesamt_richtig = 0, durchlauf = 1;
+    
+    do {
+        /* Variablen fur einen Durchlauf */
+        int richtig = 0;
+        int gesamt_fragen = durchlauf * 5;
+
+
+
+        /* User-Eingaben */
+        zahl1 = abfrage_zahl2();
+        zahl2 = abfrage_zahl1();
+        abfrage_ergebnisse();
+
+        /* Berechnung */
+        ergebnisse[0] = addition(zahl1, zahl2);
+        ergebnisse[1]= subtraktion(zahl1, zahl2);
+        ergebnisse[2]= multiplikation(zahl1, zahl2);
+        ergebnisse[3]= division(zahl1, zahl2);
+        ergebnisse[4]= modulus(zahl1, zahl2);
+
+        /* Auswertung: Rechnen */
+        for (int i = 0; i < 5; i++) {
+            if (ergebnisse[i] == user_ergebnisse[i]){
+                richtig++;
+                printf("%c korrekt!\n", ergebnis_namen[i]);
+            } else {
+                printf("%c falsch. Die richtige Antwort waere %d\n", ergebnis_namen[1], ergebnisse[i]);
+            }
+            
+        }
+        /* Auswertung: Durchlauf */
+        printf("\nIn dieser Runde wurde(n) %d Frage(n) richtig beantwortet. Das entspricht &.2f%.\n",richtig,(float)(100*richtig/5));
+
+        /* Auswertung: Gesamt */
+        gesamt_richtig += richtig;
+        printf("\nIm der %d. Runde wurden insgesamt %d Fragen von %d richtig beantwortet.\n Das entspricht %.2f%.\n", durchlauf, gesamt_fragen, (float)(100 * gesamt_richtig/gesamt_fragen));
+
+        /* Zaehlvariable erhoehen */
+        durchlauf++;
+        
+    } while (getchar() != ESC);
+    
+
+    return 0;
+}

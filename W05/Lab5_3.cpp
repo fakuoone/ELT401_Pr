@@ -1,10 +1,10 @@
 /*************************************************************************
-	Dateiname:			Lab5_3_2.cpp
+	Dateiname:			Lab5_3.cpp
 	Beschreibung: 		Mathepruefung
 	Version:			1.0
 	Aenderungsgrund: 	-
 	Projekt:    		Mathepruefung 
-	Datum:      		28.11.2019
+	Datum:      		01.12.2019
 	Bearbeiter:			
 *************************************************************************/
 
@@ -12,11 +12,11 @@
 #include <stdio.h>
 
 /* Definition von Makros */
-#define ENTER 10
+#define ENTER (char)('\n')
 #define ESC 27
 
     /* Definition globaler Variablen */
-    int user_ergebnisse[4];
+    int user_ergebnisse[5];
 
 /* Funktion zur Berechnung der Summe */
 int addition(int x, int y){
@@ -53,10 +53,10 @@ int abfrage_zahl1(void) {
         scanf_return = scanf("%d%c", &operand, &enter);
         if ((scanf_return == 0) || (enter != ENTER)) {
             printf("| Sie haben keine gueltige Zahl eingegeben!\n| Bitte geben Sie eine richtige Zahl ein.\n");
-            while (getchar() != ENTER);
-        } else if (enter != ENTER) {
+            if (enter !=  ENTER) {
                 while (getchar() != ENTER);
                 scanf_return = 0;
+            }
         } else if ((operand < 1) || (operand > 100)) {
             printf("| Die Zahl ist ausserhalb des Bereichs!\n");
             scanf_return = 0;
@@ -76,10 +76,10 @@ int abfrage_zahl2(void) {
         scanf_return = scanf("%d%c", &operand, &enter);
         if ((scanf_return == 0) || (enter != ENTER)) {
             printf("| Sie haben keine gueltige Zahl eingegeben!\n| Bitte geben Sie eine richtige Zahl ein.\n");
-            while (getchar() != ENTER);
-        } else if (enter != ENTER) {
+            if (enter != ENTER) {
                 while (getchar() != ENTER);
                 scanf_return = 0;
+            }
         } else if ((operand < 1) || (operand > 100)) {
             printf("| Die eingegebene Zahl ist ausserhalb des vorgebenen Bereichs!\n");
             scanf_return = 0;
@@ -116,10 +116,10 @@ int abfrage_ergebnisse(void) {
             if ((scanf_return == 0)  || (enter != ENTER))  {
                 printf("| Sie haben keine gueltige Zahl eingegeben!\n| Bitte geben Sie eine richtige Zahl ein.\n");
                 while (getchar() != ENTER);
-            }
-            else if (enter != ENTER) {
-                while (getchar() != ENTER);
-                scanf_return = 0;
+                if (enter != ENTER) {
+                    while (getchar() != ENTER);
+                    scanf_return = 0;
+                }
             }
         } while (scanf_return == 0);
     }
@@ -130,7 +130,7 @@ int main(void){
     /* Eingabevariablen */
     int zahl1, zahl2;
     /* Ausgabevariablen */
-    int ergebnisse[4];
+    int ergebnisse[5];
     int gesamt_richtig = 0, 
         durchlauf = 0; 
     float prozent;
@@ -166,7 +166,7 @@ int main(void){
         /* User-Eingaben */
         zahl1 = abfrage_zahl1();
         zahl2 = abfrage_zahl2();
-                printf("+---------------------------------------------------------------+\n");
+        printf("+---------------------------------------------------------------+\n");
 
         abfrage_ergebnisse();
         /* Berechnung */
@@ -177,7 +177,7 @@ int main(void){
         ergebnisse[4] = modulus(zahl1, zahl2);
 
         /* Auswertung: Rechnen */
-                printf("+---------------------------------------------------------------+\n");
+        printf("+---------------------------------------------------------------+\n");
 
         for (int i = 0; i < 5; i++) {
             printf("| ");
@@ -220,7 +220,7 @@ int main(void){
         prozent = 100 * richtig / 5;
         printf("\n| Das entspricht %.2f%%.\n", prozent);
 
-            /* Auswertung: Gesamt */
+        /* Auswertung: Gesamt */
             gesamt_richtig += richtig;
         if (richtig == 1) {
             printf("|\n| Im der %d. Runde wurde insgesamt %d von %d Fragen richtig beantwortet.\n", durchlauf, gesamt_richtig, gesamt_fragen);

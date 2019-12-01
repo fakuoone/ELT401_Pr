@@ -54,9 +54,9 @@ int abfrage_zahl1(void) {
         if ((scanf_return == 0) || (enter != ENTER)) {
             printf("| Sie haben keine gueltige Zahl eingegeben!\n| Bitte geben Sie eine richtige Zahl ein.\n");
             if (enter !=  ENTER) {
-                while (getchar() != ENTER);
                 scanf_return = 0;
             }
+            while (getchar() != ENTER);
         } else if ((operand < 1) || (operand > 100)) {
             printf("| Die Zahl ist ausserhalb des Bereichs!\n");
             scanf_return = 0;
@@ -69,7 +69,6 @@ int abfrage_zahl2(void) {
     /* Steuervariablen fuer Eingabefehler */
     int scanf_return;
     char enter;
-    
     int operand;
     do {
         printf("| Bitte eine weitere Zahl zwischen 1 und 100 eingeben: ");
@@ -77,9 +76,9 @@ int abfrage_zahl2(void) {
         if ((scanf_return == 0) || (enter != ENTER)) {
             printf("| Sie haben keine gueltige Zahl eingegeben!\n| Bitte geben Sie eine richtige Zahl ein.\n");
             if (enter != ENTER) {
-                while (getchar() != ENTER);
                 scanf_return = 0;
             }
+            while (getchar() != ENTER);
         } else if ((operand < 1) || (operand > 100)) {
             printf("| Die eingegebene Zahl ist ausserhalb des vorgebenen Bereichs!\n");
             scanf_return = 0;

@@ -27,7 +27,7 @@ void schein_ausfuellen(){
 	int scanf_return = 0; 	/* Steuervariable fur Eingabefehler */
 	char enter; 			/* Variable um auf ein Enter am Zeilenende zu pruefen */
 	
-	printf("Lottoschein:\n");
+	printf("Lottoschein bitte ausfuellen:\n");
 	for (int i = 0; i < 8; i++) {
 		if (i < 7) {
 		/* Eintragung der 6 Lottozahlen mit Zusatzzahl */
@@ -90,7 +90,10 @@ void schein_ausfuellen(){
 
 /* Ziehung der Zahlen */
 void ziehung(void){
+	/* Variablen Deklarieren */
 	int steuervariable;
+
+	/* Beginn der Ziehung */
 	for (int i = 0; i < 8; i++)
 	{
 		do
@@ -100,7 +103,7 @@ void ziehung(void){
 			if (i < 7)
 			{
 				lottozahlen[i] = (rand() % 49)+1;
-				/* Fehlerabfang doppelte Zahlen */
+				/* Fehlerabfang: doppelte Zahlen */
 				for (int j = 0; j < i ; j++) {
 					if (lottozahlen[i] == lottozahlen[j]) {
 						steuervariable = 0;
@@ -114,21 +117,11 @@ void ziehung(void){
 	}
 }
 
-int	main(void) {
-	/* Globalevariablen */
+void auswertung(void) {
 	int treffer[3] = { 		/* Variablen fuer korrekte Tipps */
-		0,			/* Treffer einzelner Lottozahlen */
-		0,			/* Treffer Zusatzzahl */
-		0}; 		/* Treffer Superzahl */
-	
-
-	/* Initialisierung des Zufallsgenerators */
-	srand((unsigned int)time(NULL));
-
-	ziehung();
-	
-	schein_ausfuellen();
-
+	0,			/* Treffer einzelner Lottozahlen */
+	0,			/* Treffer Zusatzzahl */
+	0}; 		/* Treffer Superzahl */
 
 	/* Auswertung: Lottoschein */
 	printf("\n+----+----+----+----+----+----+----+----+\n");
@@ -175,7 +168,7 @@ int	main(void) {
 			}
 			printf("\n");
 		} 
-		
+		printf("\n");
 	}
 	
 	/* Auswertung: Ergebnisse */
@@ -222,5 +215,15 @@ int	main(void) {
 		printf(" ohne Zusatz- oder Superzahl.");
 	}
 	printf("\n");
+}
+
+int	main(void) {
+	/* Initialisierung des Zufallsgenerators */
+	srand((unsigned int)time(NULL));
+
+	ziehung();
+	schein_ausfuellen();
+	auswertung();
+	
 	return 0;
 }

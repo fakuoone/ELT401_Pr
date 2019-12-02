@@ -3,6 +3,12 @@ Programme Praktikum
 
 **Nur zur Kontrolle, NICHT zum kopieren**
 
+## W03 - Woche 3
++ Lab3_2: Rechnen Zweier Zahlen
+
+## W05 - Woche 5
++ Lab5_3: Mathepruefung
+
 ## W06 - Woche 6
 + Lab6_1: Promillerechner
 + Lab6_2: Cafeteria-Automat
@@ -18,9 +24,9 @@ Programme Praktikum
 + Lab8_6: Matrix transponieren
 
 ## W09 - Woche 9
-+ Lab9_1:
-+ Lab9_2:
-+ Lab9_3:
++ Lab9_1: 
++ Lab9_2: Matheprüfung mit vorgegbenen Zahlen
++ Lab9_3: 6 aus 49
 
 ## W10 - Woche 10
 + Lab10_1:

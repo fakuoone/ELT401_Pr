@@ -16,22 +16,17 @@
 /* Makros definiren */
 #define ENTER (char)('\n')
 
-int	main(void) {
-	/* Globalevariablen */
-	int lottozahlen[8]; 	/* 1 - 6: Lottozahlen;  7: Zusatzzahl; 8: Superzahl */
-	int lottoschein[8]; 	/* 1 - 6: Lottozahlen;  7: Zusatzzahl; 8: Superzahl */
+/* Globale Variablen */
+int lottozahlen[8]; 	/* 1 - 6: Lottozahlen;  7: Zusatzzahl; 8: Superzahl */
+int lottoschein[8]; 	/* 1 - 6: Lottozahlen;  7: Zusatzzahl; 8: Superzahl */
+
+
+/* Lottoschein ausfuellen */
+void schein_ausfuellen(){
+	/* Variablen definieren */
 	int scanf_return = 0; 	/* Steuervariable fur Eingabefehler */
 	char enter; 			/* Variable um auf ein Enter am Zeilenende zu pruefen */
-	int treffer[3] = { 		/* Variablen fuer korrekte Tipps */
-		0,			/* Treffer einzelner Lottozahlen */
-		0,			/* Treffer Zusatzzahl */
-		0}; 		/* Treffer Superzahl */
 	
-
-	/* Initialisierung des Zufallsgenerators */
-	srand((unsigned int)time(NULL));
-
-	/* Lottoschein ausfuellen */
 	printf("Lottoschein:\n");
 	for (int i = 0; i < 8; i++) {
 		if (i < 7) {
@@ -91,47 +86,61 @@ int	main(void) {
 			} while (scanf_return == 0);
 		}
 	}
+}
 
-
-	/* Ziehung der Zahlen */
+/* Ziehung der Zahlen */
+void ziehung(void){
+	int steuervariable;
 	for (int i = 0; i < 8; i++)
 	{
-		int steuervariable = 1;
 		do
 		{
+			steuervariable = 1;
 			/* Ziehung der 6 Zahlen + Zusatzzahl */
 			if (i < 7)
 			{
-				lottozahlen[i] = rand() % 50;
+				lottozahlen[i] = (rand() % 49)+1;
 				/* Fehlerabfang doppelte Zahlen */
 				for (int j = 0; j < i ; j++) {
-					if ((lottozahlen[i] == lottozahlen[j]) || (lottozahlen[i] == 0)) {
+					if (lottozahlen[i] == lottozahlen[j]) {
 						steuervariable = 0;
 					}
 				}
 			} else {
 			/* Ziehung der Superzahl */
-				lottozahlen[i] = rand() % 10;
-				if (lottozahlen[i] == 0) {
-					steuervariable = 0;
-				}
+				lottozahlen[i] = (rand() % 9)+1;
 			}
 		} while (steuervariable == 0);
 	}
+}
+
+int	main(void) {
+	/* Globalevariablen */
+	int treffer[3] = { 		/* Variablen fuer korrekte Tipps */
+		0,			/* Treffer einzelner Lottozahlen */
+		0,			/* Treffer Zusatzzahl */
+		0}; 		/* Treffer Superzahl */
+	
+
+	/* Initialisierung des Zufallsgenerators */
+	srand((unsigned int)time(NULL));
+
+	ziehung();
+	
+	schein_ausfuellen();
+
 
 	/* Auswertung: Lottoschein */
 	printf("\n+----+----+----+----+----+----+----+----+\n");
 	printf("|                Ziehung                |\n");
 	printf("+----+----+----+----+----+----+----+----+\n");
 	printf("|  1 |  2 |  3 |  4 |  5 |  6 |  Z |  S |\n");
-	printf("+----+----+----+----+----+----+----+----+\n\n");
-
-	printf("Lottoschein:\n");
-
+	printf("+----+----+----+----+----+----+----+----+\n");
 	for (int i = 0; i < 8; i++){
 			printf("| %2d ", lottozahlen[i]);
 	}
-	printf("|\n+----+----+----+----+----+----+----+----+\n");
+	printf("|\n+----+----+----+----+----+----+----+----+\n\n");
+	printf("Lottoschein:\n");
 
 	for (int i = 0; i < 8; i++)
 	{
@@ -169,7 +178,6 @@ int	main(void) {
 		
 	}
 	
-
 	/* Auswertung: Ergebnisse */
 	switch (treffer[0])
 	{
@@ -209,9 +217,10 @@ int	main(void) {
 		}
 	} else if ((treffer[0] > 0) && (treffer[2] > 0)) {
 		printf(" mit Superzahl!");
-	} else
+	} else if (treffer[0] > 0)
 	{
 		printf(" ohne Zusatz- oder Superzahl.");
 	}
+	printf("\n");
 	return 0;
 }

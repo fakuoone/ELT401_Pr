@@ -22,13 +22,19 @@ int eingabe(void) {
 	do {
 		printf("Bitte eine Zahl von 1 bis 9 eingeben: ");
 		scanf_return = scanf_s("%i%c", &zahl, &enter, 1);
-		if ((scanf_return == 0) || (zahl > 9) || (zahl < 1) || (enter != ENTER)) {
+		if ((scanf_return == 0) || (enter != ENTER)) {
 			printf("Falscheingabe! ");
 			if (enter != ENTER) {
 				while (getchar() == '\n');
 			}
 			scanf_return = 0;
 		}
+		if ((zahl > 9) || (zahl < 1))
+		{
+			scanf_return = 0;
+			printf("Bitte eine Zahl zwischen 1 und 9 eingeben\n");
+		}
+		
 	} while (scanf_return == 0);
 	return zahl;
 }

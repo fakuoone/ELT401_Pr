@@ -1,9 +1,9 @@
 /*************************************************************************
 	Dateiname:			Lab10_6.cpp
-	Beschreibung: 		Wie oft kommt der Buchstabe 'a' in einem String vor. 
+	Beschreibung: 		Wie oft kommt ein Buchstabe, der selbst gewaehlt wurde, in einem String vor. 
 	Version:			1.0
 	Aenderungsgrund: 	-
-	Projekt:    		Woche 10 Aufgabe 3.1
+	Projekt:    		Woche 10 Aufgabe 3.2
 	Datum:      		02.12.2019
 	Bearbeiter:			
 *************************************************************************/

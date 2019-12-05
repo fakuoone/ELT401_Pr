@@ -1,69 +1,86 @@
 /*************************************************************************
-	Dateiname:			Lab8_6.cpp
-	Beschreibung: 		Transponieren, vertauschen der Zeilen und Spalten, einer Matrix
-	Version:			1.3
-	Aenderungsgrund: 	-
-	Projekt:    		Matrix transponieren
-	Datum:      		28.11.2019
-	Bearbeiter:			
-*************************************************************************/
+Dateiname:			Lab8_6.cpp
+Beschreibung : Transponieren, vertauschen der Zeilen und Spalten, einer Matrix
+Version : 1.3
+Aenderungsgrund : -
+Projekt : Matrix transponieren
+Datum : 28.11.2019
+Bearbeiter :
+************************************************************************* /
 
-/* Einbinden der Bibliotheken */
+	/* Einbinden der Bibliotheken */
 #include <stdio.h>
 
-/* Definition von Makros */
+	/* Definition von Makros */
 #define DIMENSION 5
 
-int main(void){
+	int main(void) {
 	/* Initialisierung der Arrays */
-    int matrix1[DIMENSION][DIMENSION], matrix2[DIMENSION][DIMENSION];
+	int matrix1[DIMENSION][DIMENSION], matrix2[DIMENSION][DIMENSION];
 
 	/* Variable fuer den Uebertrag */
 	int uebertrag = 0;
 
+	/* Zaehlvariablen */
+	int zeile, spalte;
+
 	/* Matrix mit fortlaufenden Zahlen fuellen */
 	/** Schleife fure die Zeilen */
-    for (int i = 0; i < DIMENSION; i++)
-    {
+	for (zeile = 0; zeile < DIMENSION; zeile++)
+	{
 		/* Schleife fuer die Spalten */
-        for (int j = 0; j < DIMENSION; j++)
+		for (spalte = 0; spalte < DIMENSION; spalte++)
 		{
-			matrix1[i][j] = j + uebertrag + 1;
+			matrix1[zeile][spalte] = spalte + uebertrag + 1;
 		}
 		uebertrag += DIMENSION;
-    }
-	
+	}
+
 	/* Matrix transponieren */
 	/** Schleife fur die Zeilen */
-	for (int i = 0; i < DIMENSION; i++)
+	for (zeile = 0; zeile < DIMENSION; zeile++)
 	{
 		/** Schleife fuer die Spalten **/
-		for (int j = 0; j < DIMENSION; j++)
+		for (spalte = 0; spalte < DIMENSION; spalte++)
 		{
-			matrix2[j][i] = matrix1[i][j];
+			matrix2[spalte][zeile] = matrix1[zeile][spalte];
 		}
 	}
 
 	/* Anzeige Matrix 1 */
-	for (int i = 0; i < DIMENSION; i++)
+	printf("\nMatrix 1:\n");
+	for (zeile = 0; zeile < DIMENSION; zeile++)
 	{
-		for (int j = 0; j < DIMENSION; j++)
+		for (spalte = 0; spalte < DIMENSION; spalte++)
 		{
-			printf("%2d ",matrix1[i][j]);
+			printf("%4d ", matrix1[zeile][spalte]);
 		}
 		printf("\n");
 	}
 	/* Zeilenumbruch fuer eine bessere Lesbarkeit in der Ausgabe */
 	printf("\n");
-	
+
 	/* Anzeige Matrix 2 */
-	for (int i = 0; i < DIMENSION; i++)
+	printf("\nMatrix 2:\n");
+	for (zeile = 0; zeile < DIMENSION; zeile++)
 	{
-		for (int j = 0; j < DIMENSION; j++)
+		for (spalte = 0; spalte < DIMENSION; spalte++)
 		{
-			printf("%2d ",matrix2[i][j]);
+			printf("%4d ", matrix2[zeile][spalte]);
 		}
 		printf("\n");
 	}
+
+	/* "In Place" transponieren */
+	printf("\nMatrix 1 \"In Place\" transponiert:\n");
+	for (zeile = 0; zeile < DIMENSION; zeile++)
+	{
+		for (spalte = 0; spalte  < DIMENSION; spalte++)
+		{
+			printf("%4d ", matrix1[spalte][zeile]);
+		}
+		printf("\n");
+	}
+
 	return 0;
 }

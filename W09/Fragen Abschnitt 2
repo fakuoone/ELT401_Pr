@@ -1,6 +1,6 @@
 2. Übungsaufgaben
-2.1)  Die Variable ist nur kurzzeitig verfügbar (während der for Schleife), welche nach der schleife terminiert wird, daher ist es mit dem Debugger nicht möglich die Variable auszulesen.
-2.2)  Die Variable ist nur kurzzeitig verfügbar (während der for Schleife), welche nach der schleife terminiert wird, daher ist es mit dem Debugger nicht möglich die Variable auszulesen.
+2.1)  i == 100
+2.2)  11
 2.3)  50 "X" werden ausgegeben.
 2.4)  for (int i = 1; i <= 100; i += 3);
 2.5)  int i = 1;
@@ -12,4 +12,4 @@
           i +=3;
       } while(i <= 100);
 2.7)  Die Zählvariable "datensatz" wird nicht erhöht.
-2.8)  Am Ende der ersten Zeile wurde ein Semikolon gesetzt, welchste die Anweisung nutzlos macht, da keine Anweisungen in der Schleife ausgeführt werden.
+2.8)  Am Ende der ersten Zeile wurde ein Semikolon gesetzt, welches bewirkt, dass die Anweisung "printf" erst nach der Schleife ausgeführt wird, da keine Anweisungen in der Schleife ausgeführt werden.

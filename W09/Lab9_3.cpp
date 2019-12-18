@@ -38,7 +38,7 @@ void schein_ausfuellen(){
 				} else {
 					printf("Zusatzzahl: ");
 				} 
-				scanf_return = scanf("%d%c", &lottoschein[i], &enter);
+				scanf_return = scanf_s("%d%c", &lottoschein[i], &enter, 1);
 				if ((scanf_return == 0) || (enter != ENTER))
 				{
 					/* Fehlerabfang: keine Zahl */
@@ -72,7 +72,7 @@ void schein_ausfuellen(){
 		/* Eintragung der Superzahl */
 			do {
 				printf("Superzahl:  ");
-				scanf_return = scanf("%d%c", &lottoschein[i], &enter);
+				scanf_return = scanf_s("%d%c", &lottoschein[i], &enter, 1);
 				if ((scanf_return == 0) || (enter != ENTER)) {
 					printf("Sie haben keine gueltige Zahl eingegeben!\nBitte geben Sie eine Zahl ein.\n");
 					if (enter != ENTER) {
@@ -119,9 +119,9 @@ void ziehung(void){
 
 void auswertung(void) {
 	int treffer[3] = { 		/* Variablen fuer korrekte Tipps */
-	0,			/* Treffer einzelner Lottozahlen */
-	0,			/* Treffer Zusatzzahl */
-	0}; 		/* Treffer Superzahl */
+	0,						/* Treffer einzelner Lottozahlen */
+	0,						/* Treffer Zusatzzahl */
+	0}; 					/* Treffer Superzahl */
 
 	/* Auswertung: Lottoschein */
 	printf("\n+----+----+----+----+----+----+----+----+\n");
